@@ -7,7 +7,7 @@ public class ListAdapter implements HList {
     protected Vector v;
 
     public ListAdapter() {
-        v = new Vector();
+        v = new Vector(1);
     }
 
     // Deve inserire tutti gli elementi di vec in v
@@ -16,18 +16,18 @@ public class ListAdapter implements HList {
     }
 
     // Metodi da HCollection
-    // TO TEST
     public int size() {
         return v.size();
     }
 
-    // TO TEST
     public boolean isEmpty() {
         return v.isEmpty();
     }
 
     // TO TEST
     public boolean contains(Object o) {
+        if(o == null) throw new NullPointerException();
+
         return v.contains(o);
     }
 
@@ -43,17 +43,23 @@ public class ListAdapter implements HList {
 
     // TO TEST
     public Object[] toArray(Object[] a) {
+        if(a == null) throw new NullPointerException();
+
         return v.toArray(a);
     }
 
     // TO DO
     public boolean add(Object o) {
-        return false;
+        if(o == null) throw new NullPointerException();
+        
+        return v.add(o);
     }
 
-    // TO DO
+    // TO TEST
     public boolean remove(Object o) {
-        return false;
+        if(o == null) throw new NullPointerException();
+        
+        return v.remove(o);
     }
 
     // TO DO
@@ -88,6 +94,8 @@ public class ListAdapter implements HList {
 
     // TO TEST
     public boolean equals(Object o) {
+        if(o == null) throw new NullPointerException();
+        
         return v.equals(o);
     }
 
@@ -97,14 +105,14 @@ public class ListAdapter implements HList {
     }
 
     // Metodi specifici di HList
-    // TO DO
+    // TO TEST
     public Object get(int index) {
-        return null;
+        return v.get(index);
     }
 
-    // TO DO
+    // TO TEST
     public Object set(int index, Object element) {
-        return null;
+        return v.set(index, element);
     }
 
     // TO DO
@@ -112,16 +120,20 @@ public class ListAdapter implements HList {
 
     // TO DO
     public Object remove(int index) {
-        return null;
+        return v.remove(index);
     }
 
     // TO DO
     public int indexOf(Object o) {
+        if(o == null) throw new NullPointerException();
+        
         return -1;
     }
 
     // TO DO
     public int lastIndexOf(Object o) {
+        if(o == null) throw new NullPointerException();
+        
         return -1;
     }
 
