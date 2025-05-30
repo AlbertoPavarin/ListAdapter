@@ -24,7 +24,6 @@ public class ListAdapter implements HList {
         return v.isEmpty();
     }
 
-    // TO TEST
     public boolean contains(Object o) {
         if(o == null) throw new NullPointerException();
 
@@ -36,30 +35,30 @@ public class ListAdapter implements HList {
         return null;
     }
 
-    // TO TEST
     public Object[] toArray() {
         return v.toArray();
     }
 
-    // TO TEST
     public Object[] toArray(Object[] a) {
         if(a == null) throw new NullPointerException();
 
         return v.toArray(a);
     }
 
-    // TO DO
     public boolean add(Object o) {
         if(o == null) throw new NullPointerException();
         
         return v.add(o);
     }
 
-    // TO TEST
     public boolean remove(Object o) {
         if(o == null) throw new NullPointerException();
         
         return v.remove(o);
+    }
+
+    public Object remove(int index) {
+        return v.remove(index);
     }
 
     // TO DO
@@ -87,7 +86,6 @@ public class ListAdapter implements HList {
         return false;
     }
 
-    // TO TEST
     public void clear() {
         v.clear();
     }
@@ -118,19 +116,14 @@ public class ListAdapter implements HList {
     // TO DO
     public void add(int index, Object element) {}
 
-    // TO DO
-    public Object remove(int index) {
-        return v.remove(index);
-    }
-
-    // TO DO
+    // TO TEST
     public int indexOf(Object o) {
         if(o == null) throw new NullPointerException();
         
-        return -1;
+        return v.indexOf(o);
     }
 
-    // TO DO
+    // TO TEST
     public int lastIndexOf(Object o) {
         if(o == null) throw new NullPointerException();
         

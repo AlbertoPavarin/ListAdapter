@@ -21,6 +21,21 @@ public class TestListAdapter {
         list.add(2);
     }
 
+    // TEST METODO clear
+    @Test
+    public void testClear() {
+        assertTrue(list.size() == 2); // controllo se la dimensione della lista è quella iniziale corretta
+
+        list.clear();
+        assertEquals("Se la lista è vuota ritorna True", 0, list.size());
+
+        list.clear();
+         // Controllo che la dimensione non sia cambiata con un altro clear
+        assertEquals("Se la lista è vuota ritorna True", 0, list.size());
+        assertTrue(list.isEmpty() && list.size() == 0);
+    }
+    // FINE TEST METODO clear
+
     // TEST METODO size
     @Test
     public void testSize() {
@@ -66,6 +81,76 @@ public class TestListAdapter {
 
         assertFalse(list.contains(1)); // Controllo che 1 non sia nella lista
     }
-
     // FINE TEST METODO contains
+
+    // TEST METODO toArray
+    @Test
+    public void testToArray() {
+        assertTrue(list.toArray() instanceof Object[]); // Controllo se quello restituito è un'array
+
+        assertTrue(list.toArray().length == list.size()); // Controllo se le grandezze coincidono
+
+        int oldLenght = list.toArray().length;
+        list.clear();
+        assertTrue(list.size() == 0); // Controllo se la lista è stata effettivamente svuotata
+        
+        assertFalse(oldLenght == list.toArray().length);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testToArrayNullObject() {
+        list.toArray(null);
+    }
+    // FINE TEST METODO toArray
+
+    // TEST METODO add
+    @Test(expected = NullPointerException.class)
+    public void testAddNullObject() {
+        list.add(null);
+    }
+
+    @Test
+    public void testAdd() {
+        // Controllo che aggiungendo un elemento alla lista ritorni true
+        assertTrue(list.add(1));
+        assertTrue(list.add(2));
+
+        assertTrue(list.size() == 4); // Controllo se sono effettivamente stati aggiunti
+    }
+    // FINE TEST METODO add
+
+    //TEST METODO remove
+    @Test(expected = NullPointerException.class)
+    public void testRemoveNullObject() {
+        list.remove(null);
+    }
+    
+    @Test
+    public void testRemoveObject() {
+        assertFalse(list.remove("Pippo")); // Controllo se l'elemento che sto provando ad eliminare non è presente nella lista
+
+        list.add("Pippo");
+        assertTrue(list.size() == 3); // Controllo se la grandezza è cambiata
+
+        assertTrue(list.remove("Pippo")); // Controllo se l'elemento che sto provando ad eliminare ora è presente nella lista
+
+        assertTrue(list.size() == 2); // Controllo se la grandezza è cambiata dopo l'eliminazione dell'elemento
+
+    }
+
+    @Test
+    public void testRemoveIndex() {
+        list.add("Pippo");
+        assertTrue(list.size() == 3); // Controllo se la grandezza è cambiata
+
+        assertTrue(list.get(2) == list.remove(2));
+        assertTrue(list.size() == 2); // Controllo se la grandezza è cambiata
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testRemoveOutOfBoundsIndex() {
+        list.remove(-3);
+    }    
+    // FINE TEST METODO remove
+
 }
