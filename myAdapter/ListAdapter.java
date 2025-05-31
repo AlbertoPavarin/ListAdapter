@@ -30,9 +30,9 @@ public class ListAdapter implements HList {
         return v.contains(o);
     }
 
-    // TO DO
+    // TO TEST
     public HIterator iterator() {
-        return null;
+        return new IteratorAdapter(v.iterator());
     }
 
     public Object[] toArray() {
@@ -130,18 +130,25 @@ public class ListAdapter implements HList {
         return -1;
     }
 
-    // TO DO
+    // TO TEST
     public HListIterator listIterator() {
-        return null;
+        return new ListIteratorAdapter(v.listIterator());
     }
 
-    // TO DO
+    // TO TEST
     public HListIterator listIterator(int index) {
-        return null;
+        return new ListIteratorAdapter(v.listIterator(index));
     }
 
     // TO DO
     public HList subList(int fromIndex, int toIndex) {
-        return null;
+        if (fromIndex < 0 || toIndex >= this.size() || fromIndex >= this.size() || toIndex < 0) throw new IndexOutOfBoundsException();
+        if (fromIndex > toIndex) throw new IllegalArgumentException();
+        
+        ListAdapter tmpList = new ListAdapter();
+        for (int i = fromIndex; i < toIndex; i++) {
+            
+        }
+        return tmpList;
     }
 }
