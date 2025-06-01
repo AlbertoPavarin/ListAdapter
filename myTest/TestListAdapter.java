@@ -9,11 +9,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import myAdapter.ListAdapter;
-import myAdapter.HList;
+import myAdapter.IteratorAdapter;
 
 public class TestListAdapter {
 
-    private HList list = new ListAdapter();
+    private ListAdapter list = new ListAdapter();
 
     @Before
     public void setUp() {
@@ -153,4 +153,9 @@ public class TestListAdapter {
     }    
     // FINE TEST METODO remove
 
-}
+    @Test
+    public void a() {
+        IteratorAdapter i = new IteratorAdapter(list);
+    }
+
+}   

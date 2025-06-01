@@ -1,26 +1,28 @@
 package myAdapter;
 
-import java.util.Iterator;
+import java.util.Enumeration;
 
 public class IteratorAdapter implements HIterator{
-    private Iterator iterator;
+    private Enumeration e;
+    private ListAdapter list;
 
-    public IteratorAdapter(Iterator i) {
-        iterator = i;
+    public IteratorAdapter(ListAdapter l) {
+        list = l;
+        e = list.v.elements();
     }
 
-    // TO TEST
+    // TO DO
     public boolean hasNext() {
-        return iterator.hasNext();
+        return e.hasMoreElements();
     }
 
-    // TO TEST
+    // TO DO
     public Object next() {
-        return iterator.next();
+        return e.nextElement();
     }
 
-    // TO TEST
+    // TO DO
     public void remove() {
-        iterator.remove();
+        System.err.println("ppp");
     }
 }

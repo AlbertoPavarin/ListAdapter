@@ -9,45 +9,45 @@ public class ListIteratorAdapter implements HListIterator {
         li = l;
     }
 
-    // TO TEST
+    // TO DO
     public boolean hasNext() {
         return li.hasNext();
     }
 
-    // TO TEST
+    // TO DO
     public Object next() {
         return li.next();
     }
 
-    // TO TEST
+    // TO DO
     public void remove() {
         li.remove();
     }
 
-    // TO TEST
+    // TO DO
     public boolean hasPrevious() {
         return li.hasPrevious();
     }
 
-    // TO TEST
+    // TO DO
     public Object previous() {
         return li.previous();
 
     }
 
-    // TO TEST
+    // TO DO
     public int nextIndex() {
         return li.nextIndex();
 
     }
 
-    // TO TEST
+    // TO DO
     public int previousIndex() {
         return li.previousIndex();
     }
 
     // modifica ultimo elemento restituito
-    // TO TEST
+    // TO DO
     public void set(Object o)  {
         if(o == null) throw new NullPointerException();
 
@@ -55,7 +55,7 @@ public class ListIteratorAdapter implements HListIterator {
     }
 
     // inserisce prima dell'elemento successivo
-    // TO TEST
+    // TO DO
     public void add(Object o) {   
         if(o == null) throw new NullPointerException();
 

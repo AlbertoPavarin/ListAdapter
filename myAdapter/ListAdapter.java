@@ -32,7 +32,7 @@ public class ListAdapter implements HList {
 
     // TO TEST
     public HIterator iterator() {
-        return new IteratorAdapter(v.iterator());
+        return new IteratorAdapter(this);
     }
 
     public Object[] toArray() {
