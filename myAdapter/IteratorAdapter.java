@@ -5,10 +5,12 @@ import java.util.Enumeration;
 public class IteratorAdapter implements HIterator{
     private Enumeration e;
     private ListAdapter list;
+    private int index;
 
     public IteratorAdapter(ListAdapter l) {
         list = l;
         e = list.v.elements();
+        index = 0;
     }
 
     // TO DO
@@ -18,11 +20,13 @@ public class IteratorAdapter implements HIterator{
 
     // TO DO
     public Object next() {
+        index++;
         return e.nextElement();
     }
 
     // TO DO
     public void remove() {
-        System.err.println("ppp");
+        list.remove(index);
+        if (index != 0) index--;
     }
 }

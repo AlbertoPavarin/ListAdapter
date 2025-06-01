@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import myAdapter.ListAdapter;
-import myAdapter.IteratorAdapter;
 
 public class TestListAdapter {
 
@@ -153,9 +152,6 @@ public class TestListAdapter {
     }    
     // FINE TEST METODO remove
 
-    @Test
-    public void a() {
-        IteratorAdapter i = new IteratorAdapter(list);
-    }
+ 
 
 }   
