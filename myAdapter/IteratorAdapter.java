@@ -13,18 +13,16 @@ public class IteratorAdapter implements HIterator{
         index = 0;
     }
 
-    // TO DO
     public boolean hasNext() {
         return e.hasMoreElements();
     }
 
-    // TO DO
     public Object next() {
-        index++;
+        if (index != list.size() - 1) index++;
         return e.nextElement();
     }
 
-    // TO DO
+    // TO TEST circa
     public void remove() {
         list.remove(index);
         if (index != 0) index--;
