@@ -71,6 +71,12 @@ public class TestIterator {
 
         it.remove();
     }
-
+    
+    @Test(expected = IllegalAccessError.class)
+    public void testRemoveIllegalAccess() {
+        assertTrue(it.hasNext()); // mi assicuro che la lista non sia vuota
+        it.remove();
+        it.remove();
+    }
     // FINE TEST remove
 }

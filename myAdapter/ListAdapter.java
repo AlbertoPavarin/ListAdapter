@@ -105,7 +105,6 @@ public class ListAdapter implements HList {
     // Metodi specifici di HList
     // TO TEST
     public Object get(int index) {
-        System.err.println("in: " + index);
         return v.get(index);
     }
 

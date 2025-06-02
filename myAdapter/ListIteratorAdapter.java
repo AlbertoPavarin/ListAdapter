@@ -1,49 +1,52 @@
 package myAdapter;
 
-import java.util.ListIterator;
+import java.util.Enumeration;
 
 public class ListIteratorAdapter implements HListIterator {
-    private ListIterator li;
+    private Enumeration e;
+    private ListAdapter list;
+    private int index;
+    private int itState;
 
-    public ListIteratorAdapter(ListIterator l) {
-        li = l;
+    public ListIteratorAdapter(ListAdapter l) {
+        list = l;
+        e = list.v.elements();
+        index = 0;
+        itState = 1;
     }
 
-    // TO DO
+    // TO TEST
     public boolean hasNext() {
-        return li.hasNext();
+        return e.hasMoreElements();
     }
 
-    // TO DO
+    // TO TEST
     public Object next() {
-        return li.next();
+        return e.nextElement();
     }
 
     // TO DO
     public void remove() {
-        li.remove();
     }
 
     // TO DO
     public boolean hasPrevious() {
-        return li.hasPrevious();
+        return false;
     }
 
     // TO DO
     public Object previous() {
-        return li.previous();
-
+        return null;
     }
 
     // TO DO
     public int nextIndex() {
-        return li.nextIndex();
-
+        return -1;
     }
 
     // TO DO
     public int previousIndex() {
-        return li.previousIndex();
+        return -1;
     }
 
     // modifica ultimo elemento restituito
@@ -51,7 +54,7 @@ public class ListIteratorAdapter implements HListIterator {
     public void set(Object o)  {
         if(o == null) throw new NullPointerException();
 
-        li.set(o);
+        list.set(index, o);
     }
 
     // inserisce prima dell'elemento successivo
@@ -59,6 +62,5 @@ public class ListIteratorAdapter implements HListIterator {
     public void add(Object o) {   
         if(o == null) throw new NullPointerException();
 
-        li.add(o);
     }
 }
