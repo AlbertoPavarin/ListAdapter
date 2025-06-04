@@ -1,6 +1,7 @@
 package myAdapter;
 
 import java.util.Enumeration;
+import java.util.NoSuchElementException;
 
 public class ListIteratorAdapter implements HListIterator {
     private Enumeration e;
@@ -12,46 +13,55 @@ public class ListIteratorAdapter implements HListIterator {
         list = l;
         e = list.v.elements();
         index = 0;
-        itState = 1;
+        itState = 0;
     }
 
-    // TO TEST
     public boolean hasNext() {
         return e.hasMoreElements();
     }
 
-    // TO TEST
     public Object next() {
+        if (index != list.size() - 1) index++;
+        itState = 1;
         return e.nextElement();
     }
 
-    // TO DO
     public void remove() {
+        if (itState == 0) throw new IllegalAccessError();
+
+        itState = 0;
+        list.remove(index);
+        if (index != 0) index--;
     }
 
-    // TO DO
+    // TO TEST
     public boolean hasPrevious() {
-        return false;
+        return index > 0;
     }
 
-    // TO DO
+    // TO TEST
     public Object previous() {
-        return null;
+        if (index == 0) throw new NoSuchElementException();
+        index--;
+        itState = 2;
+        return list.get(index);
     }
 
-    // TO DO
+    // TO TEST
     public int nextIndex() {
-        return -1;
+        return index+1;
     }
 
-    // TO DO
+    // TO TEST
     public int previousIndex() {
-        return -1;
+        return index-1;
     }
 
     // modifica ultimo elemento restituito
-    // TO DO
+    // TO TEST
     public void set(Object o)  {
+        if (itState == 0) throw new IllegalAccessError();
+
         if(o == null) throw new NullPointerException();
 
         list.set(index, o);
@@ -61,6 +71,14 @@ public class ListIteratorAdapter implements HListIterator {
     // TO DO
     public void add(Object o) {   
         if(o == null) throw new NullPointerException();
+        if (index == 0) {
+            list.add(o);
+            e.nextElement();
+        }
+        else if (index == list.size() - 1) list.add(o);
+        else list.add(index+1, o);
 
+        itState = 0;
+        index++;
     }
 }

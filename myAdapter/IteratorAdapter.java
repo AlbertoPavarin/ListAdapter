@@ -12,7 +12,7 @@ public class IteratorAdapter implements HIterator{
         list = l;
         e = list.v.elements();
         index = 0;
-        itState = 1;
+        itState = 0;
     }
 
     public boolean hasNext() {

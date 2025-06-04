@@ -114,7 +114,9 @@ public class ListAdapter implements HList {
     }
 
     // TO DO
-    public void add(int index, Object element) {}
+    public void add(int index, Object element) {
+        v.add(index, element);
+    }
 
     // TO TEST
     public int indexOf(Object o) {
@@ -132,12 +134,12 @@ public class ListAdapter implements HList {
 
     // TO TEST
     public HListIterator listIterator() {
-        return new ListIteratorAdapter(v.listIterator());
+        return null;
     }
 
     // TO TEST
     public HListIterator listIterator(int index) {
-        return new ListIteratorAdapter(v.listIterator(index));
+        return null;
     }
 
     // TO DO
