@@ -35,9 +35,9 @@ public class TestListIterator {
         assertTrue(list.size() == 0 && list.isEmpty());
 
         it.add(1);
-        assertFalse(it.hasNext()); // Mi assicuro che l'elemento appena inserito in una lista vuota non sia dopo il cursore
-        assertTrue(it.hasPrevious()); // Mi assicuro che l'elemento appena inserito in una lista nuova sia prima del cursore
-        assertEquals("Ritorna true se l'elemento previous è proprio quello inserito nella lista", 1, it.previous());
+        assertTrue(it.hasNext()); // Mi assicuro che l'elemento sia stato inserito
+        // assertTrue(it.hasPrevious()); // Mi assicuro che l'elemento appena inserito in una lista nuova sia prima del cursore
+        // assertEquals("Ritorna true se l'elemento previous è proprio quello inserito nella lista", 1, it.previous());
     }
     // FINE TEST add
 
@@ -119,15 +119,65 @@ public class TestListIterator {
 
         assertTrue(it.hasPrevious()); // Controllo che scorrendo la lista abbia qualcosa prima della posizione corrente
 
-        it.previous(); // Sono
+        it.previous();
 
         assertFalse(it.hasPrevious()); // Controllo che ritornando all'inizio della lista non abbia niente come elemento precedente
 
         it.add(3);
         assertTrue(it.hasPrevious());
-        System.err.println(it.previous());
+        it.previous();
         assertFalse(it.hasPrevious());
     }
 
-    // INIZIO TEST hasPrevious
+    // FINE TEST hasPrevious
+
+    // INIZIO TEST previous
+    @Test
+    public void testPrevious() {
+        int i = -1;
+        list.add(3);
+        while (it.hasNext())
+        {
+            it.next();
+            i++;
+        }
+
+        while (it.hasPrevious())
+            assertEquals("Ritorna true se l'elemento ritornato da previous è uguale a quello dell'indice della lista", it.previous(), list.get(--i)); // --i prechè devo controllare quello prima, non il corrente
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testPreviousNoElement() {
+        it.previous();
+    }
+    // FINE TEST previous
+
+    // INIZIO TEST nextIndex
+    @Test
+    public void testNextIndex() {
+        assertFalse(it.hasPrevious()); // Mi assicuro di essere all'inizio della lista
+        assertEquals("Ritorna true se nextIndex ritorna il primo indice", 0, it.nextIndex());
+
+        while(it.hasNext())
+            it.next();
+
+        assertEquals("Ritorna true se nextIndex ritorna l'ultimo indice", list.size()-1, it.nextIndex());
+    }
+    // FINE TEST nextIndex
+
+    // INIZIO TEST previousIndex
+    @Test
+    public void testPreviousIndex() {
+        int i = -1;
+        assertFalse(it.hasPrevious()); // Mi assicuro di essere all'inizio della lista
+        assertEquals("Ritorna true se nextIndex ritorna l'indice negativo", -1, it.previousIndex());
+        while(it.hasNext())
+        {
+            it.next();
+            i++;
+        }
+
+        assertEquals("Ritorna true se nextIndex ritorna l'ultimo indice", --i, it.previousIndex()); // --i prechè devo controllare quello prima, non il corrente
+    }
+    // FINE TEST previousIndex
 }

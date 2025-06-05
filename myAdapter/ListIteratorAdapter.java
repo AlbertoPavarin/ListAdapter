@@ -34,31 +34,26 @@ public class ListIteratorAdapter implements HListIterator {
         if (index != 0) index--;
     }
 
-    // TO TEST
     public boolean hasPrevious() {
         return index > 0;
     }
 
-    // TO TEST
     public Object previous() {
         if (index == 0) throw new NoSuchElementException();
         index--;
-        itState = 2;
+        itState = 1;
         return list.get(index);
     }
 
-    // TO TEST
     public int nextIndex() {
-        return index+1;
+        return index;
     }
 
-    // TO TEST
     public int previousIndex() {
         return index-1;
     }
 
     // modifica ultimo elemento restituito
-    // TO TEST
     public void set(Object o)  {
         if (itState == 0) throw new IllegalAccessError();
 
@@ -68,17 +63,11 @@ public class ListIteratorAdapter implements HListIterator {
     }
 
     // inserisce prima dell'elemento successivo
-    // TO DO
     public void add(Object o) {   
         if(o == null) throw new NullPointerException();
-        if (index == 0) {
-            list.add(o);
-            e.nextElement();
-        }
-        else if (index == list.size() - 1) list.add(o);
-        else list.add(index+1, o);
+        
+        list.add(index++, o);
 
         itState = 0;
-        index++;
     }
 }
