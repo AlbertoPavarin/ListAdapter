@@ -61,29 +61,97 @@ public class ListAdapter implements HList {
         return v.remove(index);
     }
 
-    // TO DO
+    // TO TEST
     public boolean containsAll(HCollection c) {
-        return false;
+        if (c == null) throw new NullPointerException();
+        HIterator it = c.iterator();
+
+        while (it.hasNext()) {
+            Object elem =  it.next();
+            if (!contains(elem))
+                return false;
+        }
+        return true;
     }
 
-    // TO DO
+    // TO TEST
     public boolean addAll(HCollection c) {
-        return false;
+        if (c == null) throw new NullPointerException();
+
+        HIterator it = c.iterator();
+
+        if (c.size() == 0)
+            return false;
+
+        while (it.hasNext()) {
+            Object elem =  it.next();
+            
+            add(elem);
+        }
+
+        return true;
     }
 
-    // TO DO
+    // TO TEST
     public boolean addAll(int index, HCollection c) {
-        return false;
+        if (c == null) throw new NullPointerException();
+
+        if (c.size() == 0)
+            return false;
+
+        if (index < 0 || index > size()) throw new IndexOutOfBoundsException();
+
+        HIterator it = c.iterator();
+
+        while (it.hasNext()) {
+            Object elem =  it.next();
+            
+            add(index++, elem);
+        }
+        return true;
     }
 
-    // TO DO
+    // TO TEST
     public boolean removeAll(HCollection c) {
-        return false;
+        if (c == null) throw new NullPointerException();
+
+        if (c.size() == 0)
+            return false;
+        
+        boolean result = false;
+        HIterator it = c.iterator();
+        
+        while (it.hasNext()) {
+            Object elem =  it.next();
+            
+            if (contains(elem)) {
+                remove(elem);
+                result = true;
+            } 
+        }
+
+        return result;
     }
 
-    // TO DO
+    // TO TEST
     public boolean retainAll(HCollection c) {
-        return false;
+        if (c == null) throw new NullPointerException();
+
+        if (c.size() == 0)
+            return false;
+
+        boolean result = false;
+        HIterator it = c.iterator();
+
+        while (it.hasNext()) {
+            Object elem =  it.next();
+            
+            if (!contains(elem)) {
+                remove(elem);
+                result = true;
+            }
+        }
+        return result;
     }
 
     public void clear() {
@@ -113,7 +181,7 @@ public class ListAdapter implements HList {
         return v.set(index, element);
     }
 
-    // TO DO
+    // TO TEST
     public void add(int index, Object element) {
         v.add(index, element);
     }
