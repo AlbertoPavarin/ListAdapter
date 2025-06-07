@@ -15,6 +15,11 @@ public class ListAdapter implements HList {
         v = new Vector();
     }
 
+    public ListAdapter(HList l){
+        v = new Vector();
+        addAll(l);
+    }
+
     // Metodi da HCollection
     public int size() {
         return v.size();
@@ -158,31 +163,43 @@ public class ListAdapter implements HList {
         v.clear();
     }
 
-    // TO TEST
     public boolean equals(Object o) {
         if(o == null) throw new NullPointerException();
         
-        return v.equals(o);
+        if (!(o instanceof HList)) return false;
+
+        HList listTmp = (HList)o;
+
+        if (this.size() != listTmp.size()) return false;
+
+        for (int i = 0; i < size(); i++) {
+            if (get(i) != listTmp.get(i)) return false;
+        }
+
+        return true;
     }
 
-    // TO DO
+    // TO TEST
     public int hashCode() {
-        return 0;
+        return v.hashCode();
     }
 
     // Metodi specifici di HList
-    // TO TEST
     public Object get(int index) {
         return v.get(index);
     }
 
-    // TO TEST
     public Object set(int index, Object element) {
+        if(element == null) throw new NullPointerException();
+
         return v.set(index, element);
     }
 
-    // TO TEST
     public void add(int index, Object element) {
+        if (index < 0 || index > size()) throw new IndexOutOfBoundsException();
+
+        if(element == null) throw new NullPointerException();
+
         v.add(index, element);
     }
 
@@ -202,23 +219,24 @@ public class ListAdapter implements HList {
 
     // TO TEST
     public HListIterator listIterator() {
-        return null;
+        return new ListIteratorAdapter(this);
     }
 
     // TO TEST
     public HListIterator listIterator(int index) {
-        return null;
+        return new ListIteratorAdapter(this, index);
     }
 
-    // TO DO
+    // TO TEST
     public HList subList(int fromIndex, int toIndex) {
         if (fromIndex < 0 || toIndex >= this.size() || fromIndex >= this.size() || toIndex < 0) throw new IndexOutOfBoundsException();
         if (fromIndex > toIndex) throw new IllegalArgumentException();
         
         ListAdapter tmpList = new ListAdapter();
-        for (int i = fromIndex; i < toIndex; i++) {
-            
+        for (int i = fromIndex; i < toIndex ; i++) {
+            tmpList.add(get(i)); 
         }
+
         return tmpList;
     }
 }

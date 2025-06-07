@@ -16,6 +16,19 @@ public class ListIteratorAdapter implements HListIterator {
         itState = 0;
     }
 
+    public ListIteratorAdapter(ListAdapter l, int i) {
+        if (index<0 || index>list.size()) throw new IndexOutOfBoundsException();
+
+        list = l;
+        e = list.v.elements();
+        index = i;
+        itState = 0;
+
+        for (int j = 0; j < i; j++) {
+            e.nextElement();
+        }
+    }
+
     public boolean hasNext() {
         return e.hasMoreElements();
     }
