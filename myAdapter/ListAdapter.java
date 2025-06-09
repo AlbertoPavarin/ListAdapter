@@ -203,18 +203,16 @@ public class ListAdapter implements HList {
         v.add(index, element);
     }
 
-    // TO TEST
     public int indexOf(Object o) {
         if(o == null) throw new NullPointerException();
         
         return v.indexOf(o);
     }
 
-    // TO TEST
     public int lastIndexOf(Object o) {
         if(o == null) throw new NullPointerException();
         
-        return -1;
+        return v.lastIndexOf(o);
     }
 
     // TO TEST
@@ -227,7 +225,6 @@ public class ListAdapter implements HList {
         return new ListIteratorAdapter(this, index);
     }
 
-    // TO TEST
     public HList subList(int fromIndex, int toIndex) {
         if (fromIndex < 0 || toIndex >= this.size() || fromIndex >= this.size() || toIndex < 0) throw new IndexOutOfBoundsException();
         if (fromIndex > toIndex) throw new IllegalArgumentException();

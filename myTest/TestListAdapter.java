@@ -5,11 +5,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertThrows;
+
 
 import org.junit.Before;
 import org.junit.Test;
 
 import myAdapter.ListAdapter;
+import myAdapter.HList;
 
 public class TestListAdapter {
 
@@ -248,4 +251,117 @@ public class TestListAdapter {
         list.set(1, null);
     }
     // FINE TEST METDO set
+
+    // INIZIO TEST METODO indexOf
+    @Test
+    public void testIndexOf() {
+        // Controllo che il valore restituito dal metodo sia uguale a quello inserito nella funzione di setup
+        assertEquals(list.indexOf(1), 0);
+        assertEquals(list.indexOf(2), 1);
+
+        // Controllo con un valore diverso
+        assertNotEquals(list.indexOf(45), 0);
+        assertNotEquals(list.indexOf(45), 1);
+
+        list.set(0, 0);
+        assertEquals(list.indexOf(0), 0); // controllo se l'elemento appena cambiato sia stato effettivamente cambiato, e che non sia quindi più quello di setup
+
+        assertEquals(-1, list.indexOf(3));
+
+        // provo aggiungendo un elemento alla lista
+        list.add(3);
+        assertEquals(list.indexOf(3), 2);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testIndexOfNullObject() {
+        list.indexOf(null);
+    }
+    // FINE TEST METODO indexOf
+
+    // INIZIO TEST METODO LastIndexOf
+    @Test
+    public void testLastIndexOf() {
+        // Controllo che il valore restituito dal metodo sia uguale a quello inserito nella funzione di setup
+        assertEquals(list.lastIndexOf(1), 0);
+        assertEquals(list.lastIndexOf(2), 1);
+
+        // Controllo con un valore diverso
+        assertNotEquals(list.lastIndexOf(45), 0);
+        assertNotEquals(list.lastIndexOf(45), 1);
+
+        list.set(0, 0);
+        assertEquals(list.lastIndexOf(0), 0); // controllo se l'elemento appena cambiato sia stato effettivamente cambiato, e che non sia quindi più quello di setup
+
+        assertEquals(-1, list.lastIndexOf(3));
+
+        // provo aggiungendo un elemento alla lista
+        list.add(3);
+        assertEquals(list.lastIndexOf(3), 2);
+
+        // provo aggiungendo un elemento uguale a quello già presente
+        list.add(2);
+        assertNotEquals(list.lastIndexOf(2), 1);
+        assertEquals(list.lastIndexOf(2), 3);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testLastIndexOfNullObject() {
+        list.lastIndexOf(null);
+    }
+    // FINE TEST METODO indexOf
+
+    // INIZIO TEST METODO subList
+    @Test
+    public void testSubList() {
+        // Controllo con un solo elemento 
+        HList tmpL = list.subList(0 , 1);
+        assertEquals(tmpL.size(), 1);
+        assertEquals(tmpL.get(0), 1); // Controllo che il primo elemento sia effettivamente il primo elemento della lista originale inserito nella funzione dei setup
+
+        // aggiungo un po' di valori
+        for (int i = 0; i < 4; i++) {
+            list.add(2+i+1);
+        }
+        // list = [1, 2, 3, 4, 5, 6]
+        tmpL = list.subList(1, 5);
+        assertEquals(tmpL.size(), 4);
+        // Constrollo che gli elementi della sublist siano effettivamente quelli che vanno dall'indice 1 al 4(compreso, quindi 5 non compreso)
+        for (int i = 0; i < tmpL.size(); i++) {
+            assertEquals(tmpL.get(i), list.get(i+1));
+        }
+
+        // provo assegnando gli indici uguali
+        tmpL = list.subList(0, 0);
+        assertEquals(tmpL.size(), 0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSubListIllegalArgument() {
+        list.subList(1, 0);
+    }
+
+    @Test
+    public void testSubListFromIndexOutOfBound() {
+        Exception ex = assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.subList(-1, 0);
+        });
+
+        ex = assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.subList(13, 1);
+        });
+        
+    }
+
+    @Test
+    public void testSubListToIndexOutOfBound() {
+        Exception ex = assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.subList(0, 5);
+        });
+
+        ex = assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.subList(0, -2);
+        });
+    }
+    // FINE TEST METODO subList
 }   
