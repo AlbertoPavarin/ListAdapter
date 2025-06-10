@@ -66,7 +66,6 @@ public class ListAdapter implements HList {
         return v.remove(index);
     }
 
-    // TO TEST
     public boolean containsAll(HCollection c) {
         if (c == null) throw new NullPointerException();
         HIterator it = c.iterator();
@@ -79,7 +78,6 @@ public class ListAdapter implements HList {
         return true;
     }
 
-    // TO TEST
     public boolean addAll(HCollection c) {
         if (c == null) throw new NullPointerException();
 
@@ -98,25 +96,24 @@ public class ListAdapter implements HList {
     }
 
     // TO TEST
-    public boolean addAll(int index, HCollection c) {
-        if (c == null) throw new NullPointerException();
+    // public boolean addAll(int index, HCollection c) {
+    //     if (c == null) throw new NullPointerException();
 
-        if (c.size() == 0)
-            return false;
+    //     if (c.size() == 0)
+    //         return false;
 
-        if (index < 0 || index > size()) throw new IndexOutOfBoundsException();
+    //     if (index < 0 || index > size()) throw new IndexOutOfBoundsException();
 
-        HIterator it = c.iterator();
+    //     HIterator it = c.iterator();
 
-        while (it.hasNext()) {
-            Object elem =  it.next();
+    //     while (it.hasNext()) {
+    //         Object elem =  it.next();
             
-            add(index++, elem);
-        }
-        return true;
-    }
+    //         add(index++, elem);
+    //     }
+    //     return true;
+    // }
 
-    // TO TEST
     public boolean removeAll(HCollection c) {
         if (c == null) throw new NullPointerException();
 
@@ -146,13 +143,13 @@ public class ListAdapter implements HList {
             return false;
 
         boolean result = false;
-        HIterator it = c.iterator();
+        HIterator it = iterator();
 
         while (it.hasNext()) {
             Object elem =  it.next();
             
-            if (!contains(elem)) {
-                remove(elem);
+            if (!c.contains(elem)) {
+                it.remove();
                 result = true;
             }
         }

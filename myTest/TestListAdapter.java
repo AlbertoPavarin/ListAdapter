@@ -1,5 +1,6 @@
 package myTest;
 
+import com.sun.source.tree.AssertTree;
 import java.util.Vector;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -364,4 +365,103 @@ public class TestListAdapter {
         });
     }
     // FINE TEST METODO subList
+
+    // INIZIO TEST METODO containsAll
+    @Test
+    public void testContainsAll() {
+        HList tmpL = new ListAdapter(list);
+        assertTrue(tmpL.containsAll(list)); // Verifico che una lista con gli stessi elementi della lista di test ritorni true
+
+        tmpL.add(3);
+        tmpL.add(4);
+        assertTrue(tmpL.containsAll(list)); // Controllo che anche aggiungendo elementi alla lista rimanga true
+
+        tmpL.remove(0);
+        assertFalse(tmpL.containsAll(list)); // Controllo che rimuovendo un elemento che è contenuto nella lista di test ritorni false
+        tmpL.add(1);
+        assertTrue(tmpL.containsAll(list)); // Controllo che riaggiungendolo ritorni true
+
+        assertTrue(tmpL.containsAll(tmpL)); // Controllo che contenga tutta se stessa
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testContainsAllNullObject() {
+        list.containsAll(null);
+    }
+    // FINE TEST METODO containsAll
+
+    // INIZIO TEST METODO addAll
+    @Test
+    public void testAddAll() {
+        HList tmpL = new ListAdapter();
+        assertTrue(tmpL.isEmpty());
+
+        assertTrue(tmpL.addAll(list)); 
+        assertTrue(tmpL.equals(list)); // Controllo che aggiungendo tutti gli elementi in un'altra lista le due coincidano
+
+        assertFalse(tmpL.addAll(new ListAdapter())); // Controllo che passando una lista vuota al metodo ritorni false
+    }
+
+    // @Test
+    // public void testAddAllIndex() {
+    //     HList tmpL = new ListAdapter();
+    //     tmpL.add(45);    
+    //     tmpL.add(15);
+        
+    //     assertFalse(tmpL.contains(list)); // Controllo che inizialmente non tutti gli elementi contenuti in tmpL non siano anche in list
+        
+    //     tmpL.addAll(1, list);
+    // }
+
+    @Test(expected = NullPointerException.class)
+    public void testAddAllNullObject() {
+        list.addAll(null);
+    }
+    // FINE TEST METODO containsAll
+
+    // INIZIO TEST METODO removeAll
+    @Test
+    public void testRemoveAll() {
+        HList tmpL = new ListAdapter(list);
+        tmpL.add(4);
+        tmpL.add(6);
+        tmpL.add(5);
+        int oldLenght = tmpL.size();
+
+        assertTrue(tmpL.containsAll(list)); // Controllo che inizialmente la lista contenga la lista di test
+        assertTrue(tmpL.removeAll(list));
+        assertFalse(tmpL.containsAll(list)); // Controllo che ora la lista non contenga più la lista di test
+        assertEquals(tmpL.size(), oldLenght - list.size()); // Verifico che la lunghezza della lista si aquella aspettata
+
+        assertFalse(tmpL.removeAll(new ListAdapter())); // Controllo che passando una lista vuota al metodo ritorni false
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testRemoveAllNullObject() {
+        list.removeAll(null);
+    }
+    // FINE TEST METODO removeAll
+
+    // INIZIO TEST METODO retainAll
+    @Test
+    public void testRetainAll() {
+        HList tmpL = new ListAdapter(list);
+        tmpL.add(4);
+        tmpL.add(6);
+        tmpL.add(5);
+        int oldLenght = tmpL.size();
+
+        assertTrue(tmpL.containsAll(list)); // Controllo che inizialmente la lista contenga la lista di test
+        assertTrue(tmpL.retainAll(list));
+        assertTrue(tmpL.containsAll(list)); // Controllo che anche dopo la chiamata del metodo gli elementi di list siano dentro tmpList
+        assertEquals(tmpL.size(), list.size()); // Verifico che la lunghezza della lista si aquella aspettata, cioè quella di list
+
+        assertFalse(tmpL.retainAll(new ListAdapter())); // Controllo che passando una lista vuota al metodo ritorni false
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testRetainAllNullObject() {
+        list.retainAll(null);
+    }
+    // FINE TEST METODO retainAll
 }   
