@@ -2,6 +2,7 @@ package myTest;
 
 import com.sun.source.tree.AssertTree;
 import java.util.Vector;
+import myAdapter.HIterator;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
@@ -464,4 +465,43 @@ public class TestListAdapter {
         list.retainAll(null);
     }
     // FINE TEST METODO retainAll
+
+    // INIZIO TEST METODO hashCode
+    @Test
+    public void testHashCode() {
+        HList l = new ListAdapter(list);
+        assertEquals(l.hashCode(), list.hashCode());
+
+        l.add(3);
+        assertNotEquals(l.hashCode(), list.hashCode());
+
+        l.clear();
+        assertEquals(l.hashCode(), 1);
+        assertNotEquals(l.hashCode(), list.hashCode());
+    }
+    // FINE TEST METODO hashCode
+
+    // INIZIO TEST METODO iterator
+    @Test
+    public void testIterator() {
+        HIterator it = list.iterator();
+        int index = 0;
+
+        // Controllo che gli elementi dell'iteratore siano gli stessi della lista e che siano nelle stesse posizioni
+        while (it.hasNext()) {
+            Object elem =  it.next();
+            
+            assertEquals(elem, list.get(index++));
+        }
+
+        // Eliminino tutti gli elementi della lista tramite iteratore
+        it = list.iterator(); 
+        while (it.hasNext()) {
+            it.next();
+            it.remove();
+        }
+
+        assertEquals(list.size(), 0); // Controllo che gli elementi siano stati eliminati
+    }
+    // FINE TEST METODO iterator
 }   

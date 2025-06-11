@@ -17,7 +17,6 @@ public class TestIterator {
     private ListAdapter list = new ListAdapter();
     private IteratorAdapter it = new IteratorAdapter(list);
 
-
     @Before
     public void setUp() {
         list.add(1);
@@ -53,6 +52,7 @@ public class TestIterator {
         list.add(4);
         assertTrue(it.hasNext()); // aggiungendo un altro elemento alla lista l'iteratore può puntare ora ad un altro elemento della lista
 
+        it.next();
         it.remove();
         assertFalse(it.hasNext()); // eliminando l'ultimo elemento ritorno alla situazione pre aggiunta
     }
@@ -66,13 +66,19 @@ public class TestIterator {
         it.next();
         it.remove();
 
+        assertTrue(it.hasNext()); // mi assicuro che ci sia ancora il secondo elemento
+
+        // elimino anche l'ultimo elemento
+        it.next();
+        it.remove();
+        // controllo che ora la lista sia vuota
+        assertTrue(list.isEmpty());
         assertFalse(it.hasNext());
     }
     
-    @Test(expected = IllegalAccessError.class)
+    @Test(expected = IllegalStateException.class)
     public void testRemoveIllegalAccess() {
         assertTrue(it.hasNext()); // mi assicuro che la lista non sia vuota
-        it.remove();
         it.remove();
     }
     // FINE TEST remove

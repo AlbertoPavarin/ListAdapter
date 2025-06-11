@@ -35,7 +35,6 @@ public class ListAdapter implements HList {
         return v.contains(o);
     }
 
-    // TO TEST
     public HIterator iterator() {
         return new IteratorAdapter(this);
     }
@@ -135,7 +134,6 @@ public class ListAdapter implements HList {
         return result;
     }
 
-    // TO TEST
     public boolean retainAll(HCollection c) {
         if (c == null) throw new NullPointerException();
 
@@ -176,7 +174,6 @@ public class ListAdapter implements HList {
         return true;
     }
 
-    // TO TEST
     public int hashCode() {
         return v.hashCode();
     }

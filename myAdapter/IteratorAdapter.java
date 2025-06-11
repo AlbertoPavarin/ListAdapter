@@ -4,9 +4,9 @@ import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
 
 public class IteratorAdapter implements HIterator{
-    private ListAdapter list;
-    private int current;
-    private int index;
+    protected ListAdapter list;
+    protected int current;
+    protected int index;
 
     public IteratorAdapter(ListAdapter l) {
         list = l;
@@ -18,7 +18,6 @@ public class IteratorAdapter implements HIterator{
         return current != list.size();
     }
 
-    // TO TEST
     public Object next() {
         try {
             Object next = list.get(current);
@@ -30,7 +29,6 @@ public class IteratorAdapter implements HIterator{
 	    }
     }
 
-    // TO TEST 
     public void remove() {
        if (index == -1)
 		throw new IllegalStateException();
