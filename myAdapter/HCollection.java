@@ -45,7 +45,7 @@ public interface HCollection {
      * Restituisce un array contenente tutti gli elementi della collezione; 
      * il runtime type dell'array restituito è quello dell'array specificato se l'array passato per parametro non riesce a contenere la collezione;
      * se invece riesce a contenerlo viene ritornato l'array passato per parametro
-     * @param a l'array in cui inserire gli elementi se è abbastanza grande
+     * @param a l'array in cui inserire gli elementi della collezione se abbastanza grande
      * @return un array contenente tutti gli elementi
      * @throws NullPointerException se a è null
      * @throws ArrayStoreException se il tipo specificato dell'array non è un supertipo di ogni elemento nella collezione
@@ -63,7 +63,7 @@ public interface HCollection {
     /**
      * Rimuove una singola istanza dell'elemento specificato, se presente.
      * @param o l'elemento da rimuovere
-     * @return {@code true} se l'elemento è stato rimosso
+     * @return true se l'elemento è stato rimosso
      */
     boolean remove(Object o) throws NullPointerException;
 
