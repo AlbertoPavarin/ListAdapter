@@ -1,6 +1,5 @@
 package myAdapter;
 
-import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
 
 public class IteratorAdapter implements HIterator{
@@ -30,16 +29,12 @@ public class IteratorAdapter implements HIterator{
     }
 
     public void remove() {
-       if (index == -1)
-		throw new IllegalStateException();
+        if (index == -1)
+		    throw new IllegalStateException();
 
-	    try {
-		    list.remove(index);
-		    if (index < current)
-		        current--;
-		    index = -1;
-	    } catch(IndexOutOfBoundsException e) {
-		    throw new ConcurrentModificationException();
-	    }
+	    list.remove(index);
+		if (index < current)
+		    current--;
+		index = -1;
     }
 }

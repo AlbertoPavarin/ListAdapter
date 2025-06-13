@@ -94,25 +94,6 @@ public class ListAdapter implements HList {
         return true;
     }
 
-    // TO TEST
-    // public boolean addAll(int index, HCollection c) {
-    //     if (c == null) throw new NullPointerException();
-
-    //     if (c.size() == 0)
-    //         return false;
-
-    //     if (index < 0 || index > size()) throw new IndexOutOfBoundsException();
-
-    //     HIterator it = c.iterator();
-
-    //     while (it.hasNext()) {
-    //         Object elem =  it.next();
-            
-    //         add(index++, elem);
-    //     }
-    //     return true;
-    // }
-
     public boolean removeAll(HCollection c) {
         if (c == null) throw new NullPointerException();
 
