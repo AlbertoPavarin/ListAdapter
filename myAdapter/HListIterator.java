@@ -36,7 +36,7 @@ public interface HListIterator extends HIterator {
     /**
      * Restituisce l'indice dell'elemento che verrebbe restituito da una chiamata a previous().
      *
-     * @return l'indice dell'elemento precedente
+     * @return l'indice dell'elemento precedente, -1 se si è all'inizio dell'iterazione
      * @throws NoSuchElementException se non esiste un elemento precedente
      */
     int previousIndex() throws NoSuchElementException;

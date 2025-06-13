@@ -25,11 +25,17 @@ import org.junit.Test;
  *          del ListIterator su ListAdapter vuoti e non vuoti. <br />
  *          Si suppongono funzionanti i metodi di {@link myAdapter.ListAdapter}, di cui viene fornita un'istanza. <br />
  *          Prima di eseguire qualunque test la ListAdapter viene popolata con due valori di prova e poi viene creato l'iteratore, quindi prima di ogni test la ListAdapter sarà sempre popolata con quei due valori
- *          {@link myAdapter.ListAdapter#add add} usato per aggiungere gli elementi nella funzione setUp.
+ *          {@link myAdapter.ListAdapter#add(Object) add} usato per aggiungere gli elementi nella funzione setUp.
  */
 
 public class TestListIterator {
+    /**
+     * La ListAdapter utilizzata per i test. Contiene gli elementi e da cui viene creato l'iteratore
+     */
     private ListAdapter list = new ListAdapter();
+    /**
+     * L'iteratore alla ListAdapter
+     */
     private HListIterator it;
 
     /**
@@ -297,9 +303,9 @@ public class TestListIterator {
      * @d.esign    Si vuole analizzare il comportamento di {@code nextIndex()} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che restituisca il corretto indice <br />
      *              cioè l'indice del prossimo elemento che sarebbe restituito da next. <br />
      * 
-     * @d.escription   Si suppongono testati e funzionanti il metodo {@code hasNext()}, {@code hasrevious()}, {@code next()}, {@link myAdapter.ListAdapter#size() size}, {@link myAdapter.ListAdapter#contains(Object) contains} <br />
+     * @d.escription   Si suppongono testati e funzionanti il metodo {@code hasNext()}, {@code hasrPevious()}, {@code next()}, {@link myAdapter.ListAdapter#size() size}, {@link myAdapter.ListAdapter#contains(Object) contains} <br />
      *                  1.      Si controlla di essere all'inizio della lista.  <br />
-     *                  2.      Si verifica che chiamando nextIndex all'inizio della lista l'indice ritornato sia 0 (inizio lista)
+     *                  2.      Si verifica che chiamando nextIndex all'inizio della lista l'indice ritornato sia 0 (inizio lista) <br />
      *                  3.      Si verifica che continuando ad andare al prossimo elemento con next, l'indice ritornato sia corretto. <br />
      *                  4.      Si verifica che una volta finiti gli elementi da leggere, il prossimo indice sia pari alla grandezza della lista <br />
      * 
@@ -327,24 +333,27 @@ public class TestListIterator {
 
     // INIZIO TEST previousIndex
     /**
-     * Test del metodo {@link myAdapter.ListAdapter.ListIteratorAdapter#nextIndex() nextIndex} sulla vista dei valori di una ListAdapter con elementi.
+     * Test del metodo {@link myAdapter.ListAdapter.ListIteratorAdapter#previousIndex() previousIndex} sulla vista dei valori di una ListAdapter con elementi.
      * 
-     * @s.ummary   Verifica che il metodo {@code nextIndex()} ritorni l'indice del prossimo elemento che sarebbe restituito da next().
+     * @s.ummary   Verifica che il metodo {@code previousIndex()} ritorni l'indice del elemento precedente che sarebbe restituito da previous().
      * 
-     * @d.esign    Si vuole analizzare il comportamento di {@code nextIndex()} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che restituisca il corretto indice <br />
-     *              cioè l'indice del prossimo elemento che sarebbe restituito da next. <br />
+     * @d.esign    Si vuole analizzare il comportamento di {@code previousIndex()} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che restituisca il corretto indice <br />
+     *              cioè l'indice del elemento precedente che sarebbe restituito da previous. <br />
      * 
-     * @d.escription   Si suppongono testati e funzionanti il metodo {@code hasNext()}, {@code hasrevious()}, {@code next()}, {@link myAdapter.ListAdapter#size() size}, {@link myAdapter.ListAdapter#contains(Object) contains} <br />
+     * @d.escription   Si suppongono testati e funzionanti il metodo {@code hasNext()}, {@code hasPrevious()}, {@code next()}, {@link myAdapter.ListAdapter#size() size}, {@link myAdapter.ListAdapter#contains(Object) contains} <br />
      *                  1.      Si controlla di essere all'inizio della lista.  <br />
-     *                  2.      Si verifica che chiamando nextIndex all'inizio della lista l'indice ritornato sia 0 (inizio lista)
-     *                  3.      Si verifica che continuando ad andare al prossimo elemento con next, l'indice ritornato sia corretto. <br />
-     *                  4.      Si verifica che una volta finiti gli elementi da leggere, il prossimo indice sia pari alla grandezza della lista <br />
+     *                  2.      Si verifica che essendo all'inizio della lista il metodo ritorni -1 <br />
+     *                  3.      Si va all'ultimo elemento con next tenendo conto dell'indice in cui si è <br />
+     *                  4.      Si controlla che la lunghezza della lista non sia cambiata <br />
+     *                  5.      Si ritorna all'inizio della lista e ad ogni iterazione si controlla se l'indice ritornato è quello corretto <br />
+     *                  4.      Si controlla che la lunghezza della lista non sia cambiata <br />
+     * 
      * 
      * @p.recond   La ListAdapter che viene letta dall'iteratore e' stata popolata e l'iteratore e' stato posizionato all'inizio della collezione
      * 
      * @p.ostcond  La ListAdapter letta dall'iteratore contiene ancora lo stesso numero di elementi.
      * 
-     * @r.esult    {@code nextIndex()} deve restuire l'indice corretto.
+     * @r.esult    {@code previousIndex()} deve restuire l'indice corretto.
      */
     @Test
     public void testPreviousIndex() {
@@ -356,8 +365,15 @@ public class TestListIterator {
             it.next();
             i++;
         }
+        int oldLength = i;
+        assertEquals(list.size(), i);
 
-        assertEquals("Ritorna true se nextIndex ritorna l'ultimo indice", --i, it.previousIndex()); // --i prechè devo controllare quello prima, non il corrente
+        while (it.hasPrevious()) {
+            assertEquals("Ritorna true se nextIndex ritorna l'ultimo indice", --i, it.previousIndex()); // --i prechè devo controllare quello prima, non il corrente
+            it.previous();
+        }
+
+        assertEquals(list.size(), oldLength);
     }
     // FINE TEST previousIndex
 }

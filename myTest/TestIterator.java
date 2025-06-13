@@ -23,7 +23,7 @@ import myAdapter.HIllegalStateException;
  *          del CollectionIterator su ListAdapter vuoti e non vuoti. <br />
  *          Si suppongono funzionanti i metodi di {@link myAdapter.ListAdapter}, di cui viene fornita un'istanza. <br />
  *          Prima di eseguire qualunque test la ListAdapter viene popolata con due valori di prova e poi viene creato l'iteratore, quindi prima di ogni test la ListAdapter sarà sempre popolata con quei due valori
- *          {@link myAdapter.ListAdapter#add add} usato per aggiungere gli elementi nella funzione setUp.
+ *          {@link myAdapter.ListAdapter#add(Object) add} usato per aggiungere gli elementi nella funzione setUp.
  */
 public class TestIterator {
 

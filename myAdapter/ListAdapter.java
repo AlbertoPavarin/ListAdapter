@@ -407,12 +407,12 @@ public class ListAdapter implements HList {
      * @param fromIndex l'indice iniziale, inclusivo
      * @param toIndex l'indice finale, esclusivo
      * @return una vista della porzione specificata di questa lista
-     * @throws IndexOutOfBoundsException se fromIndex o toIndex sono fuori dai limiti
+     * @throws IndexOutOfBoundsException se fromIndex o toIndex sono fuori dai limiti o se fromIndex è maggiore di toIndex
      * @throws IllegalArgumentException se fromIndex è maggiore di toIndex
      */
     public HList subList(int fromIndex, int toIndex) {
         if (fromIndex < 0 || toIndex >= this.size() || fromIndex >= this.size() || toIndex < 0) throw new IndexOutOfBoundsException();
-        if (fromIndex > toIndex) throw new IllegalArgumentException();
+        if (fromIndex > toIndex) throw new IndexOutOfBoundsException();
         
         ListAdapter tmpList = new ListAdapter();
         for (int i = fromIndex; i < toIndex ; i++) {
