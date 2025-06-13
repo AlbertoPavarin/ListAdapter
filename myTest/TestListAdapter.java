@@ -15,6 +15,7 @@ import org.junit.Test;
 
 import myAdapter.ListAdapter;
 import myAdapter.HList;
+import myAdapter.HIllegalStateException;
 
 public class TestListAdapter {
 
