@@ -3,8 +3,19 @@ package myTest;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
-
+/**
+ * Classe che esegue i test per le classi Iterator, ListAdapter e ListIterator.
+ * Esegue prima i test di tutte le classi insieme e poi esegue i test delle classi una per volta <br />
+ * In ogni caso scrive il numero di test effetuati, il numero di test falliti e il tempo impiegato per eseguire i test. <br />
+ * Inoltre se ci sono test falliti, mostra i dettagli dei test falliti. <br />
+ * Si utilizzano JUnit 4.13, hamcrest-core-1.3 <br />
+ */
 public class TestRunner {
+    /**
+     * Metodo principale che esegue i test per le classi Iterator, ListAdapter e ListIterator.
+     * Esegue prima i test di tutte le classi insieme e poi esegue i test delle classi una per volta e ne stampa i dettagli <br />
+     * @param args parametri passati da riga di comando
+     */
     public static void main(String[] args) {
         Class[] classes = new Class[]{  
             TestIterator.class,
