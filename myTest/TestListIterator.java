@@ -29,6 +29,15 @@ import org.junit.Test;
  */
 
 public class TestListIterator {
+
+    /**
+     * Costruttore di default.
+     * Inizializza la classe di test.
+     */
+    public TestListIterator() {
+        // Nessuna inizializzazione necessaria
+    }
+    
     /**
      * La ListAdapter utilizzata per i test. Contiene gli elementi e da cui viene creato l'iteratore
      */

@@ -26,7 +26,13 @@ import myAdapter.HIllegalStateException;
  *          {@link myAdapter.ListAdapter#add(Object) add} usato per aggiungere gli elementi nella funzione setUp.
  */
 public class TestIterator {
-
+    /**
+     * Costruttore di default.
+     * Inizializza la classe di test.
+     */
+    public TestIterator() {
+        // Nessuna inizializzazione necessaria
+    }
     /**
      * La ListAdapter utilizzata per i test. Contiene gli elementi e da cui viene creato l'iteratore
      */

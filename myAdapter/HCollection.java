@@ -95,7 +95,7 @@ public interface HCollection {
     /**
      * Mantiene solo gli elementi presenti anche nella collezionen specificata. Quindi dopo la chiamata a questo metodo la seguente collezione conterrà solamente gli elementi della collezione specificata 
      * @param c la collezionen da confrontare
-     * @return true se la collezionen è cambiata
+     * @return true se la collezione è cambiata
      * @throws NullPointerException se la collezione passata è null
      */
     boolean retainAll(HCollection c) throws NullPointerException;

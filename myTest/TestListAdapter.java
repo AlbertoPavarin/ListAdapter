@@ -19,7 +19,7 @@ import myAdapter.HIllegalStateException;
 
 
 /**
- *  * Test suite per la classe {@code ListAdapter}, che implementa {@link myAdapter.HList} <br />
+ * Test suite per la classe {@link myAdapter.ListAdapter}, che implementa {@link myAdapter.HList} <br />
  * <p>
  * Summary: Verifica il corretto funzionamento dei metodi di una {@code ListAdapter}.
  * <p>
@@ -31,6 +31,13 @@ import myAdapter.HIllegalStateException;
  *          {@code#add(Object) add} usato per aggiungere gli elementi nella funzione setUp.
  */
 public class TestListAdapter {
+
+    /**
+     * Costruttore di default.
+     * Inizializza la classe di test.
+     */
+    public TestListAdapter() {
+    }
 
     /**
      * La ListAdapter utilizzata per i test. Contiene gli elementi
@@ -48,7 +55,7 @@ public class TestListAdapter {
 
     // TEST METODO clear
     /**
-     * Test del metodo {@code clear() clear} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#clear() clear} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code clear()} svuoti correttamente la lista. <br />
      * 
@@ -82,7 +89,7 @@ public class TestListAdapter {
 
     // TEST METODO size
     /**
-     * Test del metodo {@code size()} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#size() size} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code size()} ritorni la lunghezza corretta della lista. <br />
      * 
@@ -120,7 +127,7 @@ public class TestListAdapter {
 
     // TEST METODO isEmpty
     /**
-     * Test del metodo {@code isEmpty()} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#isEmpty() isEmpty()} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code isEmpty()} ritorni {@code true} se la lista è vuota, false altrimenti. <br />
      * 
@@ -155,7 +162,7 @@ public class TestListAdapter {
 
     // TEST METODO contains
      /**
-     * Test del metodo {@code contains(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#contains(Object) contains(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code @constains(Object)} ritorni {@code true} se la lista è vuota, false altrimenti. <br />
      * 
@@ -190,7 +197,7 @@ public class TestListAdapter {
     }
 
     /**
-     * Test del metodo {@code contains(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#contains(Object) contains(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code contains(Object)} lanci l'eccezione {@code NullPointerException} <br />
      * 
@@ -213,9 +220,9 @@ public class TestListAdapter {
 
     // TEST METODO toArray
     /**
-     * Test del metodo {@code toArray()} e {@code toArray(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#toArray() toArray()} e {@link myAdapter.ListAdapter#toArray(Object[]) toArray(Object[])} della ListAdapter.
      * 
-     * @s.ummary   Verifica che il metodo {@code toArray()} e {@code toArray(Object)} ritorni un'array contenente gli elementi della lista. <br />
+     * @s.ummary   Verifica che il metodo {@code toArray()} e {@code toArray(Object[])} ritorni un'array contenente gli elementi della lista. <br />
      * 
      * @d.esign    Si vuole analizzare il comportamento di {@code toArray()} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che ritorni un array della stessa <br />
      *             dimensione e che contenga gli stessi elementi della lista <br />
@@ -233,7 +240,7 @@ public class TestListAdapter {
      * 
      * @p.ostcond  La ListAdapter deve essere vuota
      * 
-     * @r.esult   {@code toArray()} e {@code toArray(Object)} deve restituire un array della stessa dimensione della lista e conn gli stessi elementi.
+     * @r.esult   {@code toArray()} e {@code toArray(Object[])} deve restituire un array della stessa dimensione della lista e conn gli stessi elementi.
      */
     @Test
     public void testToArray() {
@@ -259,20 +266,20 @@ public class TestListAdapter {
     }
 
     /**
-     * Test del metodo {@code toArray(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#toArray(Object[]) toArray(Object[])} della ListAdapter.
      * 
-     * @s.ummary   Verifica che il metodo {@code toArray(Object)} lanci l'eccezione {@code NullPointerException} <br />
+     * @s.ummary   Verifica che il metodo {@code toArray(Object[])} lanci l'eccezione {@code NullPointerException} <br />
      * 
-     * @d.esign    Si vuole analizzare il comportamento di {@code toArray(Object)} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che lanci l'eccezione <br />
+     * @d.esign    Si vuole analizzare il comportamento di {@code toArray(Object[])} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che lanci l'eccezione <br />
      *             {@code NullPointerException} quando viene passato come parametro un oggetto null <br />
      * 
-     * @d.escription    1.      Si verifica che chiamando {@code toArray(Object)} con un parametro null generi l'eccezione {@code NullPointerException}.  <br />
+     * @d.escription    1.      Si verifica che chiamando {@code toArray(Object[])} con un parametro null generi l'eccezione {@code NullPointerException}.  <br />
      * 
      * @p.recond   La ListAdapter e' stata popolata
      * 
      * @p.ostcond  La ListAdapter rimane invariata.
      * 
-     * @r.esult    {@code toArray(Object)} deve generare l'eccezione {@code NullPointerException}.
+     * @r.esult    {@code toArray(Object[])} deve generare l'eccezione {@code NullPointerException}.
      */
     @Test(expected = NullPointerException.class)
     public void testToArrayNullObject() {
@@ -282,7 +289,7 @@ public class TestListAdapter {
 
     // TEST METODO add
     /**
-     * Test del metodo {@code add(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#add(Object) add(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code add(Object)} ritorni {@code true} se la lista viene mutata, false altrimenti. <br />
      * 
@@ -316,7 +323,7 @@ public class TestListAdapter {
     }
 
     /**
-     * Test del metodo {@code add(int, Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#add(int, Object) add(int, Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code add(int, Object)} ritorni {@code true} se la lista viene mutata, false altrimenti. <br />
      * 
@@ -348,7 +355,7 @@ public class TestListAdapter {
     }
 
     /**
-     * Test del metodo {@code add(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#add(Object) add(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code add(Object)} lanci l'eccezione {@code NullPointerException} quando si passa un oggetto null<br />
      * 
@@ -369,7 +376,7 @@ public class TestListAdapter {
     }
 
     /**
-    * Test del metodo {@code add(int, Object)} della ListAdapter.
+    * Test del metodo {@link myAdapter.ListAdapter#add(int, Object) add(int, Object)} della ListAdapter.
     * 
     * @s.ummary   Verifica che il metodo {@code add(int, Object)} lanci l'eccezione {@code NullPointerException} quando si passa un oggetto null <br />
     * 
@@ -390,7 +397,7 @@ public class TestListAdapter {
     }
 
     /**
-    * Test del metodo {@code add(int, Object)} della ListAdapter.
+    * Test del metodo {@link myAdapter.ListAdapter#add(int, Object) add(int, Object)} della ListAdapter.
     * 
     * @s.ummary   Verifica che il metodo {@code add(int, Object)} lanci l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice non valido <br />
     * 
@@ -413,7 +420,7 @@ public class TestListAdapter {
 
     //TEST METODO remove
     /**
-     * Test del metodo {@code remove(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#remove(Object) remove(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code remove(Object)} ritorni {@code true} se l'elemento viene rimosso. <br />
      * 
@@ -445,7 +452,7 @@ public class TestListAdapter {
     }
 
     /**
-     * Test del metodo {@code remove(int)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#remove(int) remove(int)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code remove(int)} ritorni l'elemento rimosso. <br />
      * 
@@ -472,7 +479,7 @@ public class TestListAdapter {
     }
 
     /**
-     * Test del metodo {@code remove(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#remove(Object) remove(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code remove(Object)} lanci l'eccezione {@code NullPointerException} quando si passa un oggetto null<br />
      * 
@@ -493,7 +500,7 @@ public class TestListAdapter {
     }
 
     /**
-    * Test del metodo {@code remove(int)} della ListAdapter.
+    * Test del metodo {@link myAdapter.ListAdapter#remove(int) remove(int)} della ListAdapter.
     * 
     * @s.ummary   Verifica che il metodo {@code remove(int)} lanci l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice non valido <br />
     * 
@@ -516,7 +523,7 @@ public class TestListAdapter {
 
     // TEST METODO equals
     /**
-     * Test del metodo {@code equals(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#equals(Object) equals(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code equals(Object)} ritorni {@code true} se l'elemento passato come parametro è uguale alla ListAdapter. <br />
      * 
@@ -552,7 +559,7 @@ public class TestListAdapter {
     } 
 
     /**
-     * Test del metodo {@code equals(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#equals(Object) equals(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code equals(Object)} lanci l'eccezione {@code NullPointerException} quando si passa un oggetto null<br />
      * 
@@ -575,7 +582,7 @@ public class TestListAdapter {
 
     // INIZIO TEST METODO get
     /**
-     * Test del metodo {@code get(int)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#get(int) get(int)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code get(int)} ritorni l'elemento nella lista all'indice passato per parametro. <br />
      * 
@@ -610,7 +617,7 @@ public class TestListAdapter {
     }
 
     /**
-    * Test del metodo {@code get(int)} della ListAdapter.
+    * Test del metodo {@link myAdapter.ListAdapter#get(int) get(int)} della ListAdapter.
     * 
     * @s.ummary   Verifica che il metodo {@code get(int)} lanci l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice non valido <br />
     * 
@@ -633,7 +640,7 @@ public class TestListAdapter {
 
     // INIZIO TEST METODO set
     /**
-     * Test del metodo {@code set(int, Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#set(int, Object) set(int, Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code set(int, Object)} modifichi l'elemento in indice passato per parametro con l'elemento passato per parametro e ritorni l'elemento appena modificato. <br />
      * 
@@ -668,7 +675,7 @@ public class TestListAdapter {
     }
 
     /**
-    * Test del metodo {@code set(int, Object)} della ListAdapter.
+    * Test del metodo {@link myAdapter.ListAdapter#set(int, Object) set(int, Object)} della ListAdapter.
     * 
     * @s.ummary   Verifica che il metodo {@code set(int, Object)} lanci l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice non valido <br />
     * 
@@ -689,7 +696,7 @@ public class TestListAdapter {
     } 
 
     /**
-     * Test del metodo {@code set(int, Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#set(int, Object) set(int, Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code set(int, Object)} lanci l'eccezione {@code NullPointerException} quando si passa un oggetto null<br />
      * 
@@ -712,7 +719,7 @@ public class TestListAdapter {
 
     // INIZIO TEST METODO indexOf
     /**
-     * Test del metodo {@code indexOf(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#indexOf(Object) indexOf(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code indexOf(Object)} ritorni l'indice dell'elemento nella lista se presente oppure -1. <br />
      * 
@@ -755,7 +762,7 @@ public class TestListAdapter {
     }
 
     /**
-     * Test del metodo {@code indexOf(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#indexOf(Object) indexOf(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code indexOf(Object)} lanci l'eccezione {@code NullPointerException} quando si passa un oggetto null<br />
      * 
@@ -778,7 +785,7 @@ public class TestListAdapter {
 
     // INIZIO TEST METODO LastIndexOf
     /**
-     * Test del metodo {@code lastIndexOf(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#lastIndexOf(Object) lastIndexOf(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code lastIndexOf(Object)} ritorni l'ultimo indice dell'elemento nella lista se presente oppure -1. <br />
      * 
@@ -826,7 +833,7 @@ public class TestListAdapter {
     }
 
     /**
-     * Test del metodo {@code lastIndexOf(Object)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#lastIndexOf(Object) lastIndexOf(Object)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code lastIndexOf(Object)} lanci l'eccezione {@code NullPointerException} quando si passa un oggetto null<br />
      * 
@@ -849,7 +856,7 @@ public class TestListAdapter {
 
     // INIZIO TEST METODO subList
     /**
-     * Test del metodo {@code subList(int, int)} della ListAdapter.
+     * Test del metodo {@link myAdapter.ListAdapter#subList(int, int) subList(int, int)} della ListAdapter.
      * 
      * @s.ummary   Verifica che il metodo {@code subList(int, int)} ritorni una sotto lista della lista originale. <br />
      * 
@@ -892,7 +899,7 @@ public class TestListAdapter {
     }
 
     /**
-    * Test del metodo {@code subList(int, int)} della ListAdapter.
+    * Test del metodo {@link myAdapter.ListAdapter#subList(int, int) subLIst(int, int)} della ListAdapter.
     * 
     * @s.ummary   Verifica che il metodo {@code subList(int, int)} lanci l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice, o gli indici non validi <br />
     * 
@@ -906,7 +913,7 @@ public class TestListAdapter {
     * 
     * @p.ostcond  La ListAdapter rimane invariata.
     * 
-    * @r.esult   {@code subList(int, int)} deve generare l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice o indici non valid.
+    * @r.esult   {@code subList(int, int)} deve generare l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice o indici non valido.
     */
     @Test
     public void testSubListFromIndexOutOfBound() {
@@ -924,7 +931,7 @@ public class TestListAdapter {
     }
 
     /**
-    * Test del metodo {@code subList(int, int)} della ListAdapter.
+    * Test del metodo {@link myAdapter.ListAdapter#subList(int, int) subList(int, int)} della ListAdapter.
     * 
     * @s.ummary   Verifica che il metodo {@code subList(int, int)} lanci l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice, o gli indici non validi <br />
     * 
@@ -937,7 +944,7 @@ public class TestListAdapter {
     * 
     * @p.ostcond  La ListAdapter rimane invariata.
     * 
-    * @r.esult   {@code subList(int, int)} deve generare l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice o indici non valid.
+    * @r.esult   {@code subList(int, int)} deve generare l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice o indici non valido.
     */
     @Test
     public void testSubListToIndexOutOfBound() {
@@ -952,6 +959,27 @@ public class TestListAdapter {
     // FINE TEST METODO subList
 
     // INIZIO TEST METODO containsAll
+    /**
+     * Test del metodo {@link myAdapter.ListAdapter#containsAll(HCollection) containsAll(HCollection)} della ListAdapter.
+     * 
+     * @s.ummary   Verifica che il metodo {@code containsAll(HCollection)} ritorni {@code true} se la ListAdapter contiene tutta la HCollection passata per parametro. <br />
+     * 
+     * @d.esign    Si vuole analizzare il comportamento di {@code containsAll(HCollection)} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che il metodo ritorni <br />
+     *             {@code true} nel momento in cui tutti gli elementi della HCollection passata per parametro siano contenuti nella ListAdapter <br />
+     * 
+     * @d.escription   Si suppongono testati e funzionanti il metodo {@code remove(int)}, {@code add(Object)} <br />
+     *                  1.      Creo una lista uguale a quella originale e controllo che gli elementi di tale sotto lista siano tutti contenuti all'interno della lista originale, ritorni quindi {@code true}.  <br />
+     *                  2.      Aggiungo dei valori e ricontrollo che la nuova lista continui a contenere tutti gli elementi della lista originale, ritorna quindi {@code true}. <br />
+     *                  3.      Rimuovo uno dei valori nella nuova lista che era contenuto nella lista originale e controllo che il metodo ritorni {@code false}. <br />
+     *                  4.      Riaggiungo l'elemento appena rimosso e controllo che ora il metodo ritorni ancora {@code true}. <br />
+     *                  5.      Controllo che chiamando il metodo dalla nuova lista e passando se stessa come parametro ritorni {@code true}. <br />
+     * 
+     * @p.recond   La ListAdapter e' stata popolata
+     * 
+     * @p.ostcond  La ListAdapter deve avere dimensione invariata.
+     * 
+     * @r.esult    {@code containsAll(HCollection)} ritorna {@code true} se la ListAdapter contiene tutta la HCollection passata per parametro, {@code false} altrimenti.
+     */
     @Test
     public void testContainsAll() {
         HList tmpL = new ListAdapter(list);
@@ -969,6 +997,22 @@ public class TestListAdapter {
         assertTrue(tmpL.containsAll(tmpL)); // Controllo che contenga tutta se stessa
     }
 
+    /**
+     * Test del metodo {@link myAdapter.ListAdapter#containsAll(HCollection) containsAll(HCollection)} della ListAdapter.
+     * 
+     * @s.ummary   Verifica che il metodo {@code containsAll(HCollection)} lanci l'eccezione {@code NullPointerException} quando si passa un oggetto null<br />
+     * 
+     * @d.esign    Si vuole analizzare il comportamento di {@code containsAll(HCollection)} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che lanci l'eccezione <br />
+     *             {@code NullPointerException} quando viene passato come parametro un oggetto null <br />
+     * 
+     * @d.escription    1.      Si verifica che chiamando {@code containsAll(HCollection)} con un parametro null generi l'eccezione {@code NullPointerException}.  <br />
+     * 
+     * @p.recond   La ListAdapter e' stata popolata
+     * 
+     * @p.ostcond  La ListAdapter rimane invariata.
+     * 
+     * @r.esult    {@code containsAll(HCollection)} deve generare l'eccezione {@code NullPointerException}.
+     */
     @Test(expected = NullPointerException.class)
     public void testContainsAllNullObject() {
         list.containsAll(null);
@@ -976,6 +1020,26 @@ public class TestListAdapter {
     // FINE TEST METODO containsAll
 
     // INIZIO TEST METODO addAll
+    /**
+     * Test del metodo {@link myAdapter.ListAdapter#addAll(HCollection) addAll(HCollection)} della ListAdapter.
+     * 
+     * @s.ummary   Verifica che il metodo {@code addAll(HCollection)} ritorni {@code true} se la ListAdapter viene cambiata come risultato della chiamata. <br />
+     * 
+     * @d.esign    Si vuole analizzare il comportamento di {@code addAll(HCollection)} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che il metodo ritorni <br />
+     *             {@code true} nel momento in cui tutti gli elementi della HCollection passata per parametro vengono inseriti nella lista, ed è quindi cambiata, {@code false} alrimenti <br />
+     * 
+     * @d.escription   Si suppongono testati e funzionanti il metodo {@code isEmpty()}, {@code equals(Object)}<br />
+     *                  1.      Creo una lista e controllo che la lista sia vuota.  <br />
+     *                  2.      Chiamo il metodo sulla nuova lista e controllo che ritorni {@code true} come risultato della chiamata. <br />
+     *                  3.      Si verifica che aggiungendo tutti gli elementi della lista originale ad una lista vuota le due siano uguali. <br />
+     *                  4.      Si verifica che passando una lista vuota al metoto ritorni {@code false}. <br />
+     * 
+     * @p.recond   La ListAdapter e' stata popolata
+     * 
+     * @p.ostcond  La ListAdapter originale deve avere dimensione invariata e tmpL e list devono essere uguali.
+     * 
+     * @r.esult    {@code addAll(HCollection)} ritorna {@code true} se la ListAdapter viene cambiata, {@code false} altrimenti.
+     */
     @Test
     public void testAddAll() {
         HList tmpL = new ListAdapter();
@@ -987,17 +1051,62 @@ public class TestListAdapter {
         assertFalse(tmpL.addAll(new ListAdapter())); // Controllo che passando una lista vuota al metodo ritorni false
     }
 
+    /**
+     * Test del metodo {@link myAdapter.ListAdapter#addAll(int, HCollection) addAll(int, HCollection)} della ListAdapter.
+     * 
+     * @s.ummary   Verifica che il metodo {@code addAll(int, HCollection)} ritorni {@code true} se la ListAdapter viene cambiata come risultato della chiamata. <br />
+     * 
+     * @d.esign    Si vuole analizzare il comportamento di {@code addAll(int, HCollection)} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che il metodo ritorni <br />
+     *             {@code true} nel momento in cui tutti gli elementi della HCollection passata per parametro vengono inseriti nella lista a partire dall'indice passato per parametro, <br />
+     *             ed è quindi cambiata, {@code false} alrimenti <br />
+     * 
+     * @d.escription   Si suppongono testati e funzionanti il metodo {@code get(int)}, {@code add(Object)}, {@code containsAll(HCollection)}<br />
+     *                  1.      Creo una lista nuova e si aggiungono due valori di prova diversi da quelli inseriti nella funzione di setUp.  <br />
+     *                  2.      Si verifica che gli elementi nella nuova lista non siano contenuti nella lista originale. <br />
+     *                  3.      Salvo il valore contenuto nell'indice 1 della lista originale e aggiungo la nuova lista nella lista originale, a partire dall'indice 1, assicurandomi che il metodo ritorni {@code true}. <br />
+     *                  4.      Si verifica che passando una lista vuota al metoto ritorni {@code false}. <br />
+     *                  5.      Si verifica che in posizione 1 nella lista sia contenuto il primo elemento della lista inserita. <br />
+     *                  6.      Si verifica che in posizione 1 nella lista non sia più contenuto l'elemento che prima del test era prima in posizione 1. <br />
+     * 
+     * @p.recond   La ListAdapter e' stata popolata
+     * 
+     * @p.ostcond  La ListAdapter originale deve avere dimensione pari a list.size + tmpL.size.
+     * 
+     * @r.esult    {@code addAll(int, HCollection)} ritorna {@code true} se la ListAdapter viene cambiata, {@code false} altrimenti.
+     */
     @Test
     public void testAddAllIndex() {
         HList tmpL = new ListAdapter();
         tmpL.add(45);    
         tmpL.add(15);
         
-        assertFalse(tmpL.contains(list)); // Controllo che inizialmente non tutti gli elementi contenuti in tmpL non siano anche in list
+        assertFalse(tmpL.containsAll(list)); // Controllo che inizialmente non tutti gli elementi contenuti in tmpL non siano anche in list
         
-        list.addAll(1, tmpL);
+        Object e = list.get(1);
+
+        assertTrue(list.addAll(1, tmpL));
+        assertFalse(list.addAll(0, new ListAdapter()));
+
+        assertEquals(list.get(1), 45);
+        assertNotEquals(list.get(1), e);
     }
 
+    /**
+    * Test del metodo {@link myAdapter.ListAdapter#addAll(int, HCollection) addAll(int, HCollection)} della ListAdapter.
+    * 
+    * @s.ummary   Verifica che il metodo {@code addAll(int, HCollection)} lanci l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice non valido <br />
+    * 
+    * @d.esign    Si vuole analizzare il comportamento di {@code addAll(int, HCollection)} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che lanci l'eccezione <br />
+    *             {@code NullPointerException} quando viene passato come parametro un indice o gli indici non validi<br />
+    * 
+    * @d.escription    1.      Si verifica che chiamando {@code addAll(int, HCollection)} con un parametro indice non valido generi l'eccezione {@code IndexOutOfBoundsException}.  <br />
+    * 
+    * @p.recond   La ListAdapter e' stata popolata
+    * 
+    * @p.ostcond  La ListAdapter rimane invariata.
+    * 
+    * @r.esult   {@code addAll(int, HCollection)} deve generare l'eccezione {@code IndexOutOfBoundsException} quando si passa un indice non valido.
+    */
     @Test(expected = IndexOutOfBoundsException.class)
     public void testAddAllIndexOutOfBound() {
         HList tmpL = new ListAdapter();
@@ -1007,13 +1116,51 @@ public class TestListAdapter {
         list.addAll(-3, tmpL);
     }
 
+    /**
+     * Test del metodo {@link myAdapter.ListAdapter#addAll(HCollection) addAll(HCollection)} della ListAdapter.
+     * 
+     * @s.ummary   Verifica che il metodo {@code addAll(HCollection)} lanci l'eccezione {@code NullPointerException} quando si passa un oggetto null<br />
+     * 
+     * @d.esign    Si vuole analizzare il comportamento di {@code addAll(HCollection)} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che lanci l'eccezione <br />
+     *             {@code NullPointerException} quando viene passato come parametro un oggetto null <br />
+     * 
+     * @d.escription    1.      Si verifica che chiamando {@code addAll(HCollection)} con un parametro null generi l'eccezione {@code NullPointerException}.  <br />
+     * 
+     * @p.recond   La ListAdapter e' stata popolata
+     * 
+     * @p.ostcond  La ListAdapter rimane invariata.
+     * 
+     * @r.esult    {@code addAll(HCollection)} deve generare l'eccezione {@code NullPointerException}.
+     */
     @Test(expected = NullPointerException.class)
     public void testAddAllNullObject() {
         list.addAll(null);
     }
-    // FINE TEST METODO containsAll
+    // FINE TEST METODO addAll
 
     // INIZIO TEST METODO removeAll
+    /**
+     * Test del metodo {@link myAdapter.ListAdapter#removeAll(HCollection) removeAll(HCollection)} della ListAdapter.
+     * 
+     * @s.ummary   Verifica che il metodo {@code removeAll(HCollection)} ritorni {@code true} se la ListAdapter viene cambiata come risultato della chiamata. <br />
+     * 
+     * @d.esign    Si vuole analizzare il comportamento di {@code removeAll(HCollection)} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che il metodo ritorni <br />
+     *             {@code true} nel momento in cui tutti gli elementi della HCollection passata per parametro vengono rimossi nella lista, ed è quindi cambiata, {@code false} alrimenti <br />
+     * 
+     * @d.escription   Si suppongono testati e funzionanti il metodo {@code size()}, {@code containsAll(HCollection)}, {@code add(Object)}<br />
+     *                  1.      Creo una lista uguale a quella originale e inoltre aggiungo altri valori all'interno e salvo la sua lunghezza.  <br />
+     *                  2.      Si verifica che la nuova lista contenga tutta la lista iniziale. <br />
+     *                  3.      Si verifica che chiamando il metodo {@code removeAll(HCollection)} il metodo ritorni {@code true}. <br />
+     *                  4.      Si verifica dopo la rimozione che la nuova lista non contenga più gli elementi della lista originale. <br />
+     *                  5.      Si verifica dopo la rimozione le lunghezza non coincidano e che la dimensione della nuova lista sia pari a quella prima della rimozione meno quella della lista originale. <br />
+     *                  6.      Si verifica che chiamando il metodo con una lista vuota il metodo ritorni {@code false}. <br />
+     * 
+     * @p.recond   La ListAdapter e' stata popolata
+     * 
+     * @p.ostcond  La ListAdapter originale deve avere dimensione invariata.
+     * 
+     * @r.esult    {@code removeAll(HCollection)} ritorna {@code true} se la ListAdapter viene cambiata, {@code false} altrimenti.
+     */
     @Test
     public void testRemoveAll() {
         HList tmpL = new ListAdapter(list);
@@ -1025,11 +1172,27 @@ public class TestListAdapter {
         assertTrue(tmpL.containsAll(list)); // Controllo che inizialmente la lista contenga la lista di test
         assertTrue(tmpL.removeAll(list));
         assertFalse(tmpL.containsAll(list)); // Controllo che ora la lista non contenga più la lista di test
-        assertEquals(tmpL.size(), oldLenght - list.size()); // Verifico che la lunghezza della lista si aquella aspettata
+        assertEquals(tmpL.size(), oldLenght - list.size()); // Verifico che la lunghezza della lista sia quella aspettata
 
         assertFalse(tmpL.removeAll(new ListAdapter())); // Controllo che passando una lista vuota al metodo ritorni false
     }
 
+    /**
+     * Test del metodo {@link myAdapter.ListAdapter#removeAll(HCollection) removeAll(HCollection)} della ListAdapter.
+     * 
+     * @s.ummary   Verifica che il metodo {@code removeAll(HCollection)} lanci l'eccezione {@code NullPointerException} quando si passa un oggetto null<br />
+     * 
+     * @d.esign    Si vuole analizzare il comportamento di {@code removeAll(HCollection)} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che lanci l'eccezione <br />
+     *             {@code NullPointerException} quando viene passato come parametro un oggetto null <br />
+     * 
+     * @d.escription    1.      Si verifica che chiamando {@code removeAll(HCollection)} con un parametro null generi l'eccezione {@code NullPointerException}.  <br />
+     * 
+     * @p.recond   La ListAdapter e' stata popolata
+     * 
+     * @p.ostcond  La ListAdapter rimane invariata.
+     * 
+     * @r.esult    {@code removeAll(HCollection)} deve generare l'eccezione {@code NullPointerException}.
+     */
     @Test(expected = NullPointerException.class)
     public void testRemoveAllNullObject() {
         list.removeAll(null);
@@ -1037,6 +1200,29 @@ public class TestListAdapter {
     // FINE TEST METODO removeAll
 
     // INIZIO TEST METODO retainAll
+    /**
+     * Test del metodo {@link myAdapter.ListAdapter#retainAll(HCollection) retainAll(HCollection)} della ListAdapter.
+     * 
+     * @s.ummary   Verifica che il metodo {@code retainAll(HCollection)} ritorni {@code true} se la ListAdapter viene cambiata come risultato della chiamata. <br />
+     * 
+     * @d.esign    Si vuole analizzare il comportamento di {@code retainAll(HCollection)} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che il metodo ritorni <br />
+     *             {@code true} nel momento in cui tutti gli elementi non della HCollection passata per parametro vengono rimossi nella lista, ed è quindi cambiata, {@code false} alrimenti <br />
+     * 
+     * @d.escription   Si suppongono testati e funzionanti il metodo {@code size()}, {@code containsAll(HCollection)}, {@code add(Object)}<br />
+     *                  1.      Creo una lista uguale a quella originale e inoltre aggiungo altri valori all'interno e salvo la sua lunghezza.  <br />
+     *                  2.      Si verifica che la nuova lista contenga tutta la lista iniziale. <br />
+     *                  3.      Si verifica che chiamando il metodo {@code retainAll(HCollection)} il metodo ritorni {@code true}. <br />
+     *                  4.      Si verifica dopo la chiamata al metodo la nuova lista contenga ancora gli elementi della lista originale. <br />
+     *                  5.      Si verifica dopo la chiamata al metodo le lunghezza coincidano e che la dimensione della nuova lista sia pari a quella della lista originale. <br />
+     *                  6.      Si verifica che gli elementi inseriti nella nuova lista non siano più in tale lista. <br />
+     *                  7.      Si verifica che chiamando il metodo con una lista vuota come parametro ritorni {@code false}. <br />
+     * 
+     * @p.recond   La ListAdapter e' stata popolata
+     * 
+     * @p.ostcond  La ListAdapter originale deve avere dimensione invariata.
+     * 
+     * @r.esult    {@code retainAll(HCollection)} ritorna {@code true} se la ListAdapter viene cambiata, {@code false} altrimenti.
+     */
     @Test
     public void testRetainAll() {
         HList tmpL = new ListAdapter(list);
@@ -1050,9 +1236,29 @@ public class TestListAdapter {
         assertTrue(tmpL.containsAll(list)); // Controllo che anche dopo la chiamata del metodo gli elementi di list siano dentro tmpList
         assertEquals(tmpL.size(), list.size()); // Verifico che la lunghezza della lista si aquella aspettata, cioè quella di list
 
+        assertFalse(tmpL.contains(4));
+        assertFalse(tmpL.contains(5));
+        assertFalse(tmpL.contains(6));
+
         assertFalse(tmpL.retainAll(new ListAdapter())); // Controllo che passando una lista vuota al metodo ritorni false
     }
 
+    /**
+     * Test del metodo {@link myAdapter.ListAdapter#retainAll(HCollection) retainAll(HCollection)} della ListAdapter.
+     * 
+     * @s.ummary   Verifica che il metodo {@code retainAll(HCollection)} lanci l'eccezione {@code NullPointerException} quando si passa un oggetto null<br />
+     * 
+     * @d.esign    Si vuole analizzare il comportamento di {@code retainAll(HCollection)} su un ListAdapter fatto di piu' elementi gia' prima della sua chiamata. Verifico che lanci l'eccezione <br />
+     *             {@code NullPointerException} quando viene passato come parametro un oggetto null <br />
+     * 
+     * @d.escription    1.      Si verifica che chiamando {@code retainAll(HCollection)} con un parametro null generi l'eccezione {@code NullPointerException}.  <br />
+     * 
+     * @p.recond   La ListAdapter e' stata popolata
+     * 
+     * @p.ostcond  La ListAdapter rimane invariata.
+     * 
+     * @r.esult    {@code retainAll(HCollection)} deve generare l'eccezione {@code NullPointerException}.
+     */
     @Test(expected = NullPointerException.class)
     public void testRetainAllNullObject() {
         list.retainAll(null);
@@ -1060,9 +1266,33 @@ public class TestListAdapter {
     // FINE TEST METODO retainAll
 
     // INIZIO TEST METODO hashCode
+    /**
+     * Test del metodo {@link myAdapter.ListAdapter#hashCode() hashCode}.
+     * 
+     * @s.ummary   Verifica che il metodo {@code hashCode()} generi correttamente l'hashCode della lista che chiama il metodo.
+     * 
+     * @d.esign    Si vuole verificare che il metodo {@code hashCode()} preveda il corretto aggiornamento dell'hashCode della lista al variare <br />
+     *               degli elementi contenuti nella lista, senza generare errori. <br /> 
+     *              Se due liste hanno lo stesso hashCode allora si dimostra che se {@code l1.equals(l2)}, allora {@code l1.hashCode()} == {@code l2.hashCode()}.
+     * 
+     * @d.escription   Si suppongono testati e funzionanti il metodo {@code add(Object)}, {@code clear(Object)} 
+     *                  1.  Si crea una lista ausiliaria inizialmente uguale alla lista chiamante. <br />
+     *                  2.  Si verifica che le due mappe sono uguali e che di conseguenza anche i loro hashCode sono uguali. <br />
+     *                  3.  Si verifica che aggiungendo un nuovo valore i due hashCode non coincidano più. <br />
+     *                  4.  Si svuota la lista di partenza e si verifica che l'hashCode di una lista vuota e' 1. <br />
+     *                  5.  Si confronta l'hashCode della lista vuota con la lista di partenza e si verifica che non siano uguali, modifiche alla lista comporta modifiche all'hashcode.
+     *      
+     * @p.recond   La lista e' stata popolata.
+     * 
+     * @p.ostcond  La lista e' stata svuotata.
+     * 
+     * @r.esult    Il metodo {@code hashCode()} restituisce i risultati attesi nei vari punti.
+     * 
+     */
     @Test
     public void testHashCode() {
         HList l = new ListAdapter(list);
+        assertTrue(list.equals(l));
         assertEquals(l.hashCode(), list.hashCode());
 
         l.add(3);
@@ -1075,26 +1305,18 @@ public class TestListAdapter {
     // FINE TEST METODO hashCode
 
     // INIZIO TEST METODO iterator
+    /** 
+     * Per i test riguardanti gli iteratori, consultare {@link myTest.TestIterator}
+     * */
     @Test
-    public void testIterator() {
-        HIterator it = list.iterator();
-        int index = 0;
-
-        // Controllo che gli elementi dell'iteratore siano gli stessi della lista e che siano nelle stesse posizioni
-        while (it.hasNext()) {
-            Object elem =  it.next();
-            
-            assertEquals(elem, list.get(index++));
-        }
-
-        // Eliminino tutti gli elementi della lista tramite iteratore
-        it = list.iterator(); 
-        while (it.hasNext()) {
-            it.next();
-            it.remove();
-        }
-
-        assertEquals(list.size(), 0); // Controllo che gli elementi siano stati eliminati
-    }
+    public void testIterator() {}
     // FINE TEST METODO iterator
+
+    // INIZIO TEST METODO listIterator
+    /** 
+     * Per i test riguardanti gli iteratori, consultare {@link myTest.TestListIterator}
+     * */
+    @Test
+    public void testListIterator() {}
+    // FINE TEST METODO listIterator
 }   
