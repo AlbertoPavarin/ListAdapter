@@ -1215,7 +1215,7 @@ public class TestListAdapter {
      *                  4.      Si verifica dopo la chiamata al metodo la nuova lista contenga ancora gli elementi della lista originale. <br />
      *                  5.      Si verifica dopo la chiamata al metodo le lunghezza coincidano e che la dimensione della nuova lista sia pari a quella della lista originale. <br />
      *                  6.      Si verifica che gli elementi inseriti nella nuova lista non siano più in tale lista. <br />
-     *                  7.      Si verifica che chiamando il metodo con una lista vuota come parametro ritorni {@code false}. <br />
+     *                  7.      Si verifica che chiamando il metodo con una lista vuota come parametro ritorni {@code true} e che sia quindi vuota. <br />
      * 
      * @p.recond   La ListAdapter e' stata popolata
      * 
@@ -1240,7 +1240,8 @@ public class TestListAdapter {
         assertFalse(tmpL.contains(5));
         assertFalse(tmpL.contains(6));
 
-        assertFalse(tmpL.retainAll(new ListAdapter())); // Controllo che passando una lista vuota al metodo ritorni false
+        assertTrue(tmpL.retainAll(new ListAdapter())); // Controllo che passando una lista vuota al metodo ritorni true
+        assertTrue(tmpL.isEmpty());
     }
 
     /**

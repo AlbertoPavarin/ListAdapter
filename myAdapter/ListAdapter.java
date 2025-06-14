@@ -253,8 +253,10 @@ public class ListAdapter implements HList {
     public boolean retainAll(HCollection c) {
         if (c == null) throw new NullPointerException();
 
-        if (c.size() == 0)
-            return false;
+        if (c.size() == 0)  {
+            clear();
+            return true;
+        }
 
         boolean result = false;
         HIterator it = iterator();
